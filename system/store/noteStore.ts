@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 type Data = {
     name: string;
@@ -8,6 +8,7 @@ type Data = {
 
 type Store = {
     data: Data[];
+    currentData: Data | null;
     createData: (name: string, type: string, data: any) => void;
     removeDataByIndex: (index: number) => void;
     removeDataByName: (name: string) => void;
@@ -17,6 +18,7 @@ type Store = {
 
 const useNoteStore = create<Store>((set, get) => ({
     data: [],
+    currentData: null,
     createData: (name, type, data) => set((state) => ({ data: [...state.data, { name, type, data }] })),
     removeDataByIndex: (index) => set((state) => ({ data: state.data.filter((_, i) => i !== index) })),
     removeDataByName: (name) => set((state) => ({ data: state.data.filter((data) => data.name !== name) })),

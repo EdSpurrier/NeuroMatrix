@@ -6,8 +6,7 @@ import styles from './NoteList.module.css'
 import { NoteListProps } from './NoteList.types'
 import Note from '../Note/Note'
 import system from '@/system'
-import AddNoteButton from '../AddNoteButton'
-import BackButton from '../BackButton'
+
 
 const NoteList = ({
   className,
@@ -16,30 +15,23 @@ const NoteList = ({
 
   const renderNotes = () => {
     console.log('note', notes)
-    return (
-      <>
-        <Note />
-        <Note />
-        <Note />
-        <Note />
-      </>
-    )
+    if (notes) {
+      return notes.map((note) => {
+        return <Note key={note.id} note={note} />
+      })
+    }
   }
 
   return (
-    <>
-      <div
-        className={clsx(
-          styles.root,
-          className,
-          'flex flex-col gap-1 w-full p-1'
-        )}
-      >
-        {renderNotes()}
-      </div>
-      <AddNoteButton />
-      <BackButton />
-    </>
+    <div
+      className={clsx(
+        styles.root,
+        className,
+        'flex flex-col gap-1 w-full p-1'
+      )}
+    >
+      {renderNotes()}
+    </div>
   )
 }
 
