@@ -7,8 +7,11 @@ type Data = {
 };
 
 type Store = {
+    editorActive: boolean;
+    setEditorState: (state: boolean) => void;
     data: Data[];
     currentData: Data | null;
+    newData: () => void;
     createData: (name: string, type: string, data: any) => void;
     removeDataByIndex: (index: number) => void;
     removeDataByName: (name: string) => void;
@@ -17,8 +20,13 @@ type Store = {
 };
 
 const useNoteStore = create<Store>((set, get) => ({
+    editorActive: false,
     data: [],
     currentData: null,
+    setEditorState(state) {
+        set({ editorActive: state });
+    },
+    newData: () => set((state) => ({ data: [...state.data, { name: '', type: '', data: '' }] })),
     createData: (name, type, data) => set((state) => ({ data: [...state.data, { name, type, data }] })),
     removeDataByIndex: (index) => set((state) => ({ data: state.data.filter((_, i) => i !== index) })),
     removeDataByName: (name) => set((state) => ({ data: state.data.filter((data) => data.name !== name) })),

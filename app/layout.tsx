@@ -8,6 +8,7 @@ import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import NoteList from "@/components/NoteList";
 import NoteNav from "@/components/NoteNav";
+import NoteEditor from "@/components/NoteEditor";
 
 export const metadata: Metadata = {
 	title: {
@@ -40,14 +41,15 @@ export default function RootLayout({
 			<head />
 			<body
 				className={clsx(
-					"min-h-screen bg-background font-sans antialiased",
+					"min-h-screen bg-background font-sans antialiased purple-dark",
 					fontSans.variable
 				)}
 			>
-				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+				<Providers themeProps={{ attribute: "class", defaultTheme: "purple-dark" }}>
 					<div className="relative flex flex-col h-screen">
 						<NoteList />
-						<NoteNav />
+						<NoteNav className="z-50" />
+						<NoteEditor className="z-25" />
 						<main>
 							{children}
 						</main>

@@ -1,8 +1,8 @@
-export type SiteConfig = typeof siteConfig;
+export type NavigationConfig = typeof nvaigationConfig;
 
-export const siteConfig = {
-	name: "NeuroMatrix",
-	description: "Infinitely Expandable Neural Matrix.",
+export const nvaigationConfig = {
+	name: "Next.js + NextUI",
+	description: "Make beautiful websites regardless of your design experience.",
 	navItems: [
 		{
 			label: "Home",

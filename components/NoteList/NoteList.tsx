@@ -16,8 +16,8 @@ const NoteList = ({
   const renderNotes = () => {
     console.log('note', notes)
     if (notes) {
-      return notes.map((note) => {
-        return <Note key={note.id} note={note} />
+      return notes.map((note, key) => {
+        return <Note key={key} />
       })
     }
   }
