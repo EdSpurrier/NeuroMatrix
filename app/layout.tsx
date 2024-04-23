@@ -47,7 +47,6 @@ export default function RootLayout({
 			>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "purple-dark" }}>
 					<div className="relative flex flex-col h-screen">
-						<NoteList />
 						<NoteNav className="z-50" />
 						<NoteEditor className="z-25" />
 						<main>

@@ -30,6 +30,13 @@ const NoteList = ({
         'flex flex-col gap-1 w-full p-1'
       )}
     >
+      <div
+        className={clsx(
+          'flex justify-center items-center'
+        )}
+      >
+        <span>#:{notes?.length}</span>
+      </div>
       {renderNotes()}
     </div>
   )

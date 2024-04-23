@@ -1,0 +1,19 @@
+[{
+  "items": [
+    {
+      "name": "name",
+      "type": "url",
+      "data": "http://google.com/"
+    },
+    {
+      "name": "name",
+      "type": "text",
+      "data": "Hello this is a note in text form"
+    },
+    {
+      "name": "name",
+      "type": "html",
+      "data": "<h1>Hello this html in html form</h1>"
+    }
+  ]
+}]

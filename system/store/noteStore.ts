@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import system from "@/system";
 
 type Data = {
     name: string;
@@ -10,7 +11,8 @@ type Store = {
     editorActive: boolean;
     setEditorState: (state: boolean) => void;
     data: Data[];
-    currentData: Data | null;
+    loadData: (data: Data[]) => void;
+    currentData: Data;
     newData: () => void;
     createData: (name: string, type: string, data: any) => void;
     removeDataByIndex: (index: number) => void;
@@ -22,7 +24,19 @@ type Store = {
 const useNoteStore = create<Store>((set, get) => ({
     editorActive: false,
     data: [],
-    currentData: null,
+    currentData: {
+        name: '',
+        type: '',
+        data: '',
+    },
+    loadData: (data) => {
+        const loadedData = system.utils.json.loadJSON('../../db/database.json');
+        console.log('Loaded data:', {
+            loadedData,
+            data,
+        })
+        set({ data })
+    },
     setEditorState(state) {
         set({ editorActive: state });
     },
